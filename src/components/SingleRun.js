@@ -1,11 +1,9 @@
 import React from 'react';
-import $ from 'jquery';
-import moment from 'moment';
 
 class SingleRun extends React.Component{
-	constructor(props) {
-		super(props);
-	};
+	// constructor(props) {
+	// 	super(props);
+	// };
 
 	render() {
 
