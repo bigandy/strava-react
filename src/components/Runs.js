@@ -49,7 +49,7 @@ class Runs extends React.Component{
 				}
 				return (
 					<div className={ className } key={i}>
-						<h2><a href={`https://www.strava.com/activities/${item.id}`} className="record__link">{item.name}</a></h2>
+						<h2><a href={`/activities/${item.id}`} className="record__link">{item.name}</a></h2>
 						<p>Date: { moment(item.date).format('DD/MM/YYYY') } <br />
 						Duration: {item.time.hours < 9 ? `0${item.time.hours}` : item.time.hours}:{item.time.minutes < 9 ? `0${item.time.minutes}` : item.time.minutes}:{item.time.seconds < 9 ? `0${item.time.seconds}` : item.time.seconds }<br />
 						Distance: {item.distance.toFixed(2)}miles</p>

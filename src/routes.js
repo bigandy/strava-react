@@ -8,7 +8,7 @@ import SingleRun from './components/SingleRun';
 const Routes = (props) => (
   <Router {...props}>
     <Route path="/" component={App} />
-    <Route path="*" component={SingleRun} />
+    <Route path="/activities/:id" component={SingleRun} />
   </Router>
 );
 
