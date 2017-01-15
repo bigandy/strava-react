@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+
+.range-selector {
+  padding: 1em 2em 0;
+}
+.range-selector h1 {
+  font-size: 1.1em;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+.range-selector__form {
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.range-selector__form div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.range-selector__form div * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+}
+.range-selector__form label {
+  text-align: right;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  padding-right: .5em;
+}
+
+.records {
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.record {
+  margin-left: 1em;
+  margin-bottom: 1em;
+  padding: 1em;
+  border: 1px solid black;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 calc(50% - 1em);
+          flex: 1 1 calc(50% - 1em);
+  min-width: 200px;
+}
+@media (min-width: 480px) {
+  .record {
+    max-width: none;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 calc(50% - 1em);
+            flex: 1 1 calc(50% - 1em);
+  }
+}
+@media (min-width: 800px) {
+  .record {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 calc(33.3333% - 1em);
+            flex: 1 1 calc(33.3333% - 1em);
+  }
+}
+.record--long-run {
+  background-color: rgba(252, 76, 2, 0.5);
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 calc(66.66% - 1em);
+          flex: 1 1 calc(66.66% - 1em);
+  position: relative;
+  border-color: #FC4C02;
+  padding-right: 20px;
+}
+.record--long-run::after {
+  height: calc(100% + 2px);
+  width: 20px;
+  background-color: #FC4C02;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  content: "";
+  display: block;
+}
+.record h2 {
+  margin-top: 0;
+}
+.record__link {
+  color: #FC4C02;
+}
+.record__link:hover {
+  color: #c93d02;
+}

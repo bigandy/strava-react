@@ -9,7 +9,7 @@ class App extends React.Component{
 
 		this.state = {
 			'start_date': '01/10/2016',
-			'end_date': '01/11/2016',
+			'end_date': '16/01/2017',
 		};
 	};
 
@@ -22,11 +22,15 @@ class App extends React.Component{
 	render() {
 		return (
 			<div className="app">
+				{
+
 				<DateRangeSelector
 					updateDate={this.updateDate}
 					start_date={this.state.start_date}
 					end_date={this.state.end_date}
 				/>
+
+				}
 
 				<Runs
 					start_date={ this.state.start_date }
