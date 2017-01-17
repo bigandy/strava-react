@@ -2,4 +2,5 @@
 
 Using create-react-app
 
-- [ ] react-router to take to different view when click on one of the runs
+- [x] react-router to take to different view when click on one of the runs
+- [ ] replace jquery with fetch (if possible) OR keep static copy of data
