@@ -12,6 +12,7 @@
     "react-dom": "^15.4.2",
     "react-router": "^3.0.1"
   },
+  "homepage": "https://bigandy.github.io/strava-react",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
