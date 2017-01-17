@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { browserHistory } from 'react-router';
 
 import './css/style.css';
 
 import Routes from './routes';
 
 ReactDOM.render(
-  <Routes
-	  history={browserHistory}
-  />,
+  <Routes />,
   document.getElementById('runs')
 );

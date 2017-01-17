@@ -1,15 +1,19 @@
 // src/routes.js
 import React from 'react';
-import { Router, Route } from 'react-router';
+import { BrowserRouter, Match, Miss } from 'react-router';
 
 import App from './components/App';
 import SingleRun from './components/SingleRun';
+import NotFound from './components/NotFound';
 
 const Routes = (props) => (
-  <Router {...props}>
-    <Route path="/" component={App} />
-    <Route path="/activities/:id" component={SingleRun} />
-  </Router>
+  <BrowserRouter>
+      <div>
+        <Match exactly pattern="/" component={ App } />
+        <Match pattern="/activities/:storeId" component={ SingleRun } />
+        <Miss component={ NotFound } />
+      </div>
+    </BrowserRouter>
 );
 
 export default Routes;

@@ -9,7 +9,7 @@ class App extends React.Component{
 
 		this.state = {
 			'start_date': '01/10/2016',
-			'end_date': '16/01/2017',
+			'end_date': '16/11/2016',
 		};
 	};
 
