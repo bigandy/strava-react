@@ -10,7 +10,7 @@ const Routes = (props) => (
   <BrowserRouter>
       <div>
         <Match exactly pattern="/" component={ App } />
-        <Match pattern="/activities/:storeId" component={ SingleRun } />
+        <Match pattern="/activities/:runId" component={ SingleRun } />
         <Miss component={ NotFound } />
       </div>
     </BrowserRouter>
