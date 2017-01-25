@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router';
 
+import posts from '../data/runs';
 // const toUnix = (date) => moment(date, 'DD-MM-YYYY').format('X');
 
 import durationCalc from '../helpers/durationCalc';
@@ -22,73 +23,71 @@ class Runs extends React.Component{
 	};
 
 	componentDidMount() {
-		fetch(this.url, this.props.options)
-			.then(response => {
-				if (!response.ok) {
-					throw Error('not okay folks');
+		// fetch(this.url, this.props.options)
+		// 	.then(response => {
+		// 		if (!response.ok) {
+		// 			throw Error('not okay folks');
+		// 		}
+		//
+		// 		return response;
+		// 	})
+		// 	.then(response => response.json())
+		// 	.then(posts => {
+        //         console.log(posts);
+        //
+		console.log(posts);
+			let postsArray = [];
+
+			posts.forEach(data => {
+				if (data.type === 'Run') {
+					const time = moment.duration(data.moving_time, 'seconds')._data; // or is it elapsed_time ??
+					const distance = metresToMiles(data.distance, 2); // convert to miles
+					const date = data.start_date_local;
+
+					postsArray.push({
+						time,
+						distance,
+						'id': data.id,
+						date,
+						'name': data.name,
+						'workout_type': data.workout_type,
+					});
 				}
 
-				return response;
-			})
-			.then(response => response.json())
-			.then(posts => {
-                console.log(posts);
-                
-				let postsArray = [];
+				return;
+			});
 
-				posts.forEach(data => {
-					if (data.type === 'Run') {
-						const time = moment.duration(data.moving_time, 'seconds')._data; // or is it elapsed_time ??
-						const distance = metresToMiles(data.distance, 2); // convert to miles
-						const date = data.start_date_local;
+			const postsOutput = postsArray.map((item, i) => {
+				let className = 'record';
+				if (item.workout_type !== null && item.workout_type === 2) {
+					className = `${className}--long-run ${className}`;
+				}
+				const date = moment(item.date).format('DD/MM/YYYY');
+				const duration = durationCalc(item.time.hours, item.time.minutes, item.time.seconds);
+				const distance = `${item.distance}miles`;
+				const name = item.name;
 
-						postsArray.push({
-							time,
-							distance,
-							'id': data.id,
-							date,
-							'name': data.name,
-							'workout_type': data.workout_type,
-						});
-					}
+				return (
+					<div className={ className } key={i}>
+						<h2>
+							<Link
+								to={{
+								  pathname: `activities/${item.id}`,
+								  state: { runFo: { name, date, duration, distance } }
+								}}
+								className="record__link">
+								{item.name}
+							</Link>
+						</h2>
+						<p>Date: { date } <br />
+						Duration: { duration }<br />
+						Distance: { distance }</p>
+					</div>
+				);
+			});
 
-					return;
-				});
-
-				const postsOutput = postsArray.map((item, i) => {
-					let className = 'record';
-					if (item.workout_type !== null && item.workout_type === 2) {
-						className = `${className}--long-run ${className}`;
-					}
-					const date = moment(item.date).format('DD/MM/YYYY');
-					const duration = durationCalc(item.time.hours, item.time.minutes, item.time.seconds);
-					const distance = `${item.distance}miles`;
-					const name = item.name;
-
-					return (
-						<div className={ className } key={i}>
-							<h2>
-								<Link
-									to={{
-									  pathname: `activities/${item.id}`,
-									  state: { runFo: { name, date, duration, distance } }
-									}}
-									className="record__link">
-									{item.name}
-								</Link>
-							</h2>
-							<p>Date: { date } <br />
-							Duration: { duration }<br />
-							Distance: { distance }</p>
-						</div>
-					);
-				});
-
-				this.setState({
-					posts: postsOutput,
-				});
-			}, (error) => {
-				console.log(error);
+			this.setState({
+				posts: postsOutput,
 			});
 	};
 

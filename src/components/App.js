@@ -1,5 +1,5 @@
 import React from 'react';
-import DateRangeSelector from './DateRangeSelector';
+// import DateRangeSelector from './DateRangeSelector';
 import Runs from './Runs';
 
 class App extends React.Component{
@@ -28,11 +28,11 @@ class App extends React.Component{
 	render() {
 		return (
 			<div className="app">
-				<DateRangeSelector
+				{/* <DateRangeSelector
 					updateDate={this.updateDate}
 					start_date={this.state.start_date}
 					end_date={this.state.end_date}
-				/>
+				/> */}
 				<Runs
 					start_date={ this.state.start_date }
 					end_date={ this.state.end_date }
