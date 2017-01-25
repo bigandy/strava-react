@@ -32,6 +32,8 @@ class Runs extends React.Component{
 			})
 			.then(response => response.json())
 			.then(posts => {
+                console.log(posts);
+                
 				let postsArray = [];
 
 				posts.forEach(data => {
